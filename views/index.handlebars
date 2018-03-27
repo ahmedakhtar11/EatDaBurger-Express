@@ -1,0 +1,52 @@
+<div id="header">
+    <img src="/assets/img/burger.png">   </img>
+    <h1>Eat-Da-Burger-Sequelize</h1>
+</div>
+
+<div id="burger">
+
+<div id="list_burgers">
+    <ul>
+    {{#each burgers}}
+        {{#unless this.devoured}}
+        <li>
+            {{this.id}}. {{this.burger_name}}
+
+            <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            <button type="submit">Devour it!</button>
+            </form>
+        </li>
+        {{/unless}}
+    {{/each}}
+    </ul>
+</div>
+
+<div id="burgers_eaten">
+
+    <ul>
+    {{#each burgers}}
+        {{#if this.devoured}}
+        <li>
+            {{this.id}}. {{this.burger_name}}
+        </li>
+        {{/if}}
+    {{/each}}
+    </ul>
+
+</div>
+
+</div>
+
+<div id="add">
+    <form action="/" method="POST">
+
+    <div class="form-group">
+    
+        <textarea rows="2" cols="50" id="burgerAdded" name="name"> </textarea>
+    </div>
+
+    <button type="submit">Submit</button>
+    </form>
+    <p>Write the Name of the burger you want to eat!</p>
+</div>
